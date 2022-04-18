@@ -9,10 +9,9 @@ html(lang="en")
 
         title #{title}
     body.m4-cloak
+        include header
 
-        script.
-            globalThis.config = !{clientConfig}
-            globalThis.darkMode = false
+        include scripts
 
-        script(src="vendor/metro4/js/metro.min.js")
-        script(type="module", src="js/index.js")
+        script(type="module" src="js/websocket.js")
+        script(type="module" src="js/index.js")

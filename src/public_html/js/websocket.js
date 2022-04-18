@@ -1,13 +1,11 @@
 
-globalThis.webSocket = null
+let webSocket
 
-const isOpen = (ws) => ws && ws.readyState === ws.OPEN
+export const isOpen = (ws) => ws && ws.readyState === ws.OPEN
 
-const connect = () => {
+export const connect = () => {
     const {host, port = 80, secure} = config.server
     const ws = new WebSocket(`${secure ? 'wss' : 'ws'}://${host}:${port}`)
-
-    globalThis.webSocket = ws
 
     ws.onmessage = event => {
         try {
@@ -33,8 +31,10 @@ const connect = () => {
     }
 
     ws.onopen = event => {
-        console.log('Connected to Aptos Wallet Server');
+        console.log('Connected to Aptos Market Server');
     }
+
+    webSocket = ws
 }
 
 const wsMessageController = (ws, response) => {
@@ -51,5 +51,5 @@ const wsMessageController = (ws, response) => {
     }
 }
 
-connect()
+//connect()
 

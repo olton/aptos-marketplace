@@ -1,3 +1,74 @@
 :root {
-
+    --border-radius: 10px;
+    --button-border-radius: 6px;
+    --body-background: #fff;
+    --form-background: #f8f8f8;
+    --dialog-background: #f8f8f8;
+    --border-color: #d9d9d9;
 }
+
+.bd-system {
+    border-color: var(--border-color);
+}
+
+.button {
+    border-radius: var(--button-border-radius);
+}
+
+body {
+    padding-top: 52px;
+}
+
+.aptos-logo {
+    height: 1.2rem;
+    line-height: 1;
+
+    img {
+        height: 100%;
+    }
+}
+
+header {
+    position: fixed!important;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    nav {
+        position: relative;
+    }
+}
+
+#title {
+    position: relative;
+}
+
+@media screen and (min-width: 800px)  {
+    #title {
+        position: fixed;
+        z-index: 1001;
+        top: 0;
+        left: 50%;
+        margin-left: -160px;
+    }
+}
+
+.login-form {
+    width: 480px;
+    max-width: 90%;
+    padding: 10px 20px;
+    background: var(--form-background);
+    border-radius: var(--border-radius);
+}
+
+.dialog {
+    border-radius: var(--border-radius);
+    background: var(--dialog-background);
+}
+
+.controls {
+    padding: 20px 10px;
+}
+
+@import "dark";

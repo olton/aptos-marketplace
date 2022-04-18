@@ -26,11 +26,13 @@
     "last 1 Edge versions"
   ],
   "dependencies": {
+    "@olton/aptos": "^0.1.12",
     "@olton/datetime": "^2.0.8",
     "assert": "^2.0.0",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "node-fetch": "^3.2.3",
+    "pg": "^8.7.3",
     "pug": "^3.0.2",
     "serve-favicon": "^2.5.0",
     "ws": "^8.5.0"

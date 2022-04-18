@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+        link(rel="stylesheet", href="vendor/metro4/css/metro-all.min.css")
+        link(rel="stylesheet", href="css/index.css")
+
+        title #{title}
+    body.m4-cloak.d-flex.flex-justify-center.flex-align-center
+        div.login-form.border.bd-system.win-shadow
+            div.d-flex.flex-row.flex-nowrap.flex-align-center
+                div.aptos-logo
+                    img(src="images/aptos_word.svg")
+                div.ml-2.reduce-1 |
+                div.ml-2.mb-2.mt-2
+                    span NFT
+                    span.ml-1 MARKET
+                span.mif-lock.ml-auto.mif-2x
+
+            form(action="javascript:" onsubmit="login(this)")
+                div.mt-2
+                    textarea.w-100.h-100(data-role="textarea" name="mnemonic" placeholder="Enter a 24 words address Mnemonic")
+
+                div.remark.warning.pt-1.pb-1
+                    | A mnemonic is a set of words in which an address is encoded.
+
+                div.form-actions.row
+                    button.button.success
+                        span Login to Market
+                    div.ml-auto.row.flex-align-center
+                        span.reduce-2-fs.reduce-1 No Address?
+                        button.button.link.text-bold(type="button" onclick="createWallet(this)")
+                            span Create It!
+
+            div.border-top.bd-system.text-center.mt-4
+                div.text-small.mt-2.row.flex-align-center.flex-justify-center
+                    span Copyright 2022 by
+                    a.ml-1.no-decor.fg-cyan(href="https://pimenov.com.ua") Serhii Pimenov.
+                    span.ml-1 From Ukraine for Aptos Community.
+
+
+        script.
+
+            globalThis.walletError = `!{walletError}`
+
+        include scripts
+
+        script(src="js/fragments.js")
+        script(src="js/login.js")
