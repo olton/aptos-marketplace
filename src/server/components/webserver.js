@@ -87,7 +87,7 @@ const route = () => {
             }
 
             res.send({
-                target: "/deals"
+                target: "/"
             })
         } catch (e) {
             error(e.message)
