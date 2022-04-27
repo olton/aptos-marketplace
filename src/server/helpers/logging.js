@@ -5,6 +5,10 @@ export const log = (msg, marker = 'info', ...rest) => {
     console.log.apply(null, [`[${marker.toUpperCase()}] ${time} ${msg}`, ...rest])
 }
 
+const logObject = (obj) => {
+    console.log(JSON.stringify(obj, null, 4))
+}
+
 const info = (msg, ...rest) => log(msg, 'info', ...rest)
 const alert = (msg, ...rest) => log(msg, 'alert', ...rest)
 const debug = (msg, ...rest) => log(msg, 'debug', ...rest)
@@ -14,5 +18,6 @@ export {
     info,
     alert,
     debug,
-    error
+    error,
+    logObject
 }

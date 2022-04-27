@@ -40,11 +40,16 @@ export const createDBConnection = () => {
 export const listenNotifies = async () => {
     const client = await globalThis.postgres.connect()
 
-    client.query('LISTEN new_token')
+    client.query('LISTEN new_deal', (err, res) => {
+        if (err) {
+            throw err
+        }
+        info(`Start listening for DB events`)
+    })
     client.on('notification', async (data) => {
         info(`${data.channel} notification:`, data.payload)
-        if (data.channel === 'new_token') {
-            globalThis.broadcast.new_block = JSON.parse(data.payload)
+        if (data.channel === 'new_deal') {
+            globalThis.everyone[data.channel] = JSON.parse(data.payload)
         }
     })
 }
@@ -58,7 +63,7 @@ export const query = async (q, p) => {
         const res = await client.query(q, p)
         const duration = Date.now() - start
         if (config.debug.pg_query) {
-            debug('Executed query', { q, duration: duration + 'ms', rows: res.rowCount })
+            debug('Executed query', { q, p, duration: duration + 'ms', rows: res.rowCount })
         }
         result = res
     } catch (e) {

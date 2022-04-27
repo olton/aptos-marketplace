@@ -1,20 +1,33 @@
-header.container-fluid.bg-light
-    nav.bg-transparent.container(data-role="app-bar" data-expand-point="md")
-        a.brand.no-hover.d-flex.flex-align-center
+header.container-fluid
+    nav.bg-white.container.border-bottom.bd-system(data-role="app-bar" data-expand-point="md")
+        a.brand.no-hover.d-flex.flex-align-center(href="/")
             div.aptos-logo
-                img(src="images/aptos_word.svg")
+                img(src="images/aptos_word.svg", style="margin-top: 2px;")
             div.ml-2.reduce-1 |
-            div.ml-2
-                span.text-bold NFT
-                span &bull;
-                span MARKET
+            div.ml-2.text-bold.enlarge-2
+                span.fg-cyan NFT
+                span.fg-yel DEMO
 
         ul.app-bar-menu.ml-auto
+            li
+                a(href="/market")
+                    span Marketplace
+
+            li
+                a(href="/my")
+                    span My Collections
+
+            li
+                a(href="/deals")
+                    span My Deals
+
+            li
+                a(href="https://aptos.dev/tutorials/your-first-nft" target="_blank")
+                    span About NFT
+
             li
                 a(href="/logout").fg-red
                     span Logout
                     span.mif-exit.mif-2x.ml-2.va-middle
 
-section.container-fluid
-    div.container
-        div.text-leader.text-center.mt-2#title Welcome to Aptos NFT Demo
+

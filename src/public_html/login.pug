@@ -1,10 +1,10 @@
 doctype html
-html(lang="en")
+html(lang="en").scrollbar-type-4.sb-darkOrange
     head
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
-        link(rel="stylesheet", href="vendor/metro4/css/metro-all.min.css")
+        link(rel="stylesheet", href="vendor/metro4/css/metro-all.css")
         link(rel="stylesheet", href="css/index.css")
 
         title #{title}
@@ -18,6 +18,10 @@ html(lang="en")
                     span NFT
                     span.ml-1 MARKET
                 span.mif-lock.ml-auto.mif-2x
+
+            div
+                span.button.link(onclick="$('textarea[name=mnemonic]').val(a1); return false;") Use Address 1
+                span.button.link.ml-2(onclick="$('textarea[name=mnemonic]').val(a2); return false;") Use Address 2
 
             form(action="javascript:" onsubmit="login(this)")
                 div.mt-2
@@ -47,5 +51,4 @@ html(lang="en")
 
         include scripts
 
-        script(src="js/fragments.js")
-        script(src="js/login.js")
+        script(type="module" src="js/login.js")

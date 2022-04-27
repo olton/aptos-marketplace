@@ -1,10 +1,24 @@
 :root {
     --border-radius: 10px;
     --button-border-radius: 6px;
+    --button-snall-border-radius: 4px;
+    --button-mini-border-radius: 4px;
     --body-background: #fff;
-    --form-background: #f8f8f8;
-    --dialog-background: #f8f8f8;
+    --form-background: #fff;
+    --dialog-background: #fff;
     --border-color: #d9d9d9;
+    --primary-background: #fef5e6;
+    --secondary-background: #f59f00;
+    --alert-color: #ff0e0e;
+    --success-color: #60a917;
+    --warning-color: #ff9f31;
+    --info-color: #428aff;
+    --text-color: #000;
+    --text-color-light: #fff;
+}
+
+.fg-yel {
+    color: #ffd640;
 }
 
 .bd-system {
@@ -13,10 +27,16 @@
 
 .button {
     border-radius: var(--button-border-radius);
+    &.small {
+        border-radius: var(--button-small-border-radius);
+    }
+    &.mini {
+        border-radius: var(--button-mini-border-radius);
+    }
 }
 
 body {
-    padding-top: 52px;
+    padding-top: 72px;
 }
 
 .aptos-logo {
@@ -40,35 +60,252 @@ header {
     }
 }
 
-#title {
-    position: relative;
-}
-
-@media screen and (min-width: 800px)  {
-    #title {
-        position: fixed;
-        z-index: 1001;
-        top: 0;
-        left: 50%;
-        margin-left: -160px;
-    }
-}
-
 .login-form {
     width: 480px;
     max-width: 90%;
     padding: 10px 20px;
     background: var(--form-background);
     border-radius: var(--border-radius);
+    margin-top: -52px;
 }
 
 .dialog {
     border-radius: var(--border-radius);
     background: var(--dialog-background);
+    top: 60px!important;
 }
 
 .controls {
     padding: 20px 10px;
+    .button {
+        margin: 2px;
+    }
+}
+
+.infobox {
+    border-radius: var(--border-radius);
+    background: var(--primary-background);
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+
+    .infobox-title {
+        font-size: 11px;
+        position: absolute;
+        top: 4px;
+        left: 22px;
+    }
+
+    #address, #balance {
+        font-size: 36px;
+        margin-left: 20px;
+    }
+
+    #balance {
+        font-size: 36px;
+        line-height: 1;
+        margin-top: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+@media screen and (min-width: 0) and (max-width: 640px){
+    #address, #balance {
+        font-size: 20px!important;
+    }
+}
+
+#collections-container, #tokens-container, #offers-container {
+    padding: 10px 0;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.token, .offer {
+    width: 160px;
+    cursor: default;
+    margin: 4px;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+
+    img {
+        margin-bottom: 10px;
+    }
+
+    .title {
+        display: flex;
+        flex-flow: column;
+        font-size: 11px!important;
+        margin-bottom: 4px;
+        padding: 5px;
+    }
+
+    .token-sub-info {
+        position: absolute;
+        top: 2px;
+        right: 4px;
+        display: flex;
+        flex-flow: column;
+    }
+
+    .obj-link, .obj-supply, .token-label {
+        z-index: 1;
+        vertical-align: middle;
+        border-radius: 4px;
+        font-size: 11px!important;
+        padding: 0 8px;
+        margin-top: 2px;
+    }
+
+    .token-label {
+        border-radius: 0;
+    }
+}
+
+.collection {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 4px;
+    width: 240px;
+    cursor: pointer;
+    padding: 8px;
+
+    img {
+        height: 36px;
+        width: 36px;
+    }
+    .title {
+        margin-left: 10px;
+        line-height: 1.2;
+    }
+    .sub-title {
+        font-size: 0.8em
+    }
+}
+
+.collection {
+    &.faded {
+        opacity: .3;
+        pointer-events:none;
+    }
+    &.selected {
+        .badge {
+            display: none;
+        }
+    }
+
+    background: #f6f6f6;
+
+    .owner-marker {
+        display: none;
+        position: absolute;
+        right: 4px;
+        bottom: 2px;
+    }
+    &.owned {
+        .owner-marker {
+            display: block;
+            color: var(--success-color);
+        }
+    }
+
+    .badge {
+        top: 2px;
+        right: 2px;
+    }
+
+    .collection-max {
+        position: absolute;
+        right: 4px;
+        bottom: 2px;
+        font-size: 12px;
+        z-index: 2;
+        background: inherit;
+    }
+}
+
+.token, .offer {
+    .title {
+        margin-top: 5px!important;
+    }
+    .img-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        background: #fff;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+
+        img {
+            //width: auto!important;
+        }
+    }
+}
+
+.token, .offer {
+    .mini.square {
+        height: 20px!important;
+        width: 20px!important;
+    }
+}
+
+.offer {
+    &.offer-closed {
+        opacity: .4;
+    }
+}
+
+.token-creator {
+    padding: 2px 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border-bottom-right-radius: 10px;
+}
+
+.hint {
+    background: var(--primary-background);
+}
+
+.toast {
+    border-radius: var(--border-radius);
+}
+
+.dialog-actions {
+    display: flex!important;
+    flex-flow: row;
+}
+
+.token-info {
+    .image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        background: #fff;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+    }
+}
+
+footer {
+}
+
+::-webkit-scrollbar {
+    height: 4px;
+}
+
+.scroll-table-container {
+    overflow-x: auto;
 }
 
 @import "dark";

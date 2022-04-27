@@ -3,7 +3,9 @@ import { fileURLToPath } from 'url'
 import fs from "fs";
 import {info, error} from "./helpers/logging.js"
 import {runWebServer} from "./components/webserver.js";
-import {createDBConnection} from "./components/postgresql.js";
+import {createDBConnection, listenNotifies} from "./components/postgresql.js";
+import {initAptos} from "./components/aptos.js";
+import {broadcast} from "./components/websocket.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const readJson = (path) => JSON.parse(fs.readFileSync(path, 'utf-8'))
@@ -34,7 +36,23 @@ export const run = () => {
             }
         })
 
+        globalThis.everyone = new Proxy({
+        }, {
+            set(target, p, value, receiver) {
+                target[p] = value
+
+                broadcast({
+                    channel: p,
+                    data: value
+                })
+
+                return true
+            }
+        })
+
+        initAptos()
         createDBConnection()
+        listenNotifies()
         runProcesses()
         runWebServer()
 

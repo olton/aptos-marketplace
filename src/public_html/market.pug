@@ -1,0 +1,57 @@
+doctype html
+html(lang="en").scrollbar-type-1.sb-darkOrange
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+        link(rel="stylesheet", href="vendor/metro4/css/metro-all.css")
+        link(rel="stylesheet", href="css/index.css")
+
+        title #{title}
+    body.m4-cloak
+
+        include header
+
+        div.container-fluid
+            div.container
+                div.row.ml-4-minus.mr-4-minus
+                    div.cell-lg-8(style="min-height:86px")
+                        div.infobox.address-wrapper
+                            div.infobox-title WALLET ADDRESS
+                            div#address 0x0
+                            div.pos-absolute(style="right: 10px;")
+                                button.button.square.large.warning(onclick="showWalletInfo()")
+                                    span.mif-info.mif-2x
+
+                    div.cell-lg-4
+                        div.infobox.balance-wrapper
+                            div.infobox-title CURRENT BALANCE
+                            div#balance 0
+                            div.pos-absolute(style="right: 10px;")
+                                button.button.square.large.warning(onclick="chargeBalance(this)")
+                                    span.mif-gas-station.mif-2x
+
+        div.container-fluid.mt-10
+            div.container
+                div
+                    div.row
+                        h3.text-light Propositions
+                        div.ml-auto
+                            button.button.info.square(onclick="refreshPropositions(this)")
+                                span.mif-2x.mif-refresh
+
+                    div.border-top.bd-system
+                        div#offers-container
+
+        include footer
+
+        script.
+            globalThis.account = !{account}
+            globalThis.balance = 0
+            globalThis.creator = null
+            globalThis.limit = 24
+            globalThis.offset = 0
+
+        include scripts
+
+        script(type="module" src="js/market.js")

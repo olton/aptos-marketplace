@@ -10,5 +10,5 @@ const copy2clipboard = (text) => {
 
 $("body").on("click", " .copy-data-to-clipboard", function() {
     copy2clipboard($(this).attr("data-value"));
-    Metro.toast.create("Data copied to clipboard!", null, 5000, "success")
+    toastSuccess("Data copied to clipboard!")
 })
