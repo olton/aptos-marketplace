@@ -126,7 +126,7 @@ export const appendToken = ({
             </div>
             <div class="title">
                 <div class="text-bold mb-1 no-wrap text-ellipsis">${escapeStr(name)}</div>
-                <div class="no-overflow">${escapeStr(desc || '&nbsp;')}</div>
+                <div class="token-desc">${escapeStr(desc || '&nbsp;')}</div>
             </div>
             <div class="mt-auto mb-1 token-actions border-top bd-system pt-1 text-center">
                 <butoon class="button mini success ${!balance ? 'd-none' : ''}" onclick="makeOffer('${collection}','${name}','${id}')">Make Offer</butoon>

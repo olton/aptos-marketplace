@@ -9,9 +9,62 @@ html(lang="en").scrollbar-type-1.sb-darkOrange
 
         title #{title}
     body.m4-cloak
-        include header
+        section.bg-white.container-fluid.pos-fixed(style="top: 0; left: 0; right: 0; z-index: 1000")
+            header.container.bg-white.pos-relative(data-role="app-bar" data-expand-point="fs")
+                a.brand.no-hover.d-flex.flex-align-center(href="/")
+                    div.aptos-logo
+                        img(src="images/aptos_word.svg", style="margin-top: 2px;")
+                    div.ml-2.reduce-1 |
+                    div.ml-2.text-bold.enlarge-2
+                        span.fg-cyan NFT
+                        span.fg-yel DEMO
 
-        include scripts
 
-        script(type="module" src="js/websocket.js")
+                ul.app-bar-menu.ml-auto
+                    li.no-hover
+                        a(href="/login", style="line-height: 32px").border.bd-system.border-radius-10 Login
+
+        section.container-fluid
+            div.container
+                div.text-leader.text-center.mt-2#demo-title
+                    div.mt-1-minus.text-bold Welcome to Aptos NFT Demo
+                    div.text-small Copyright 2022 by
+                        a.ml-1.no-decor.fg-cyan(href="https://pimenov.com.ua") Serhii Pimenov.
+                        span.ml-1 From Ukraine for Aptos Community.
+
+
+        section.container-fluid
+            div.container
+                div.hero
+                    div.row
+                        div.cell-md-6.order-2.order-md-1
+                            div.h-100.d-flex.flex-justify-center.flex-column
+                                h2.text-bold(style="max-width: 90%") NFT Marketplace Based on Aptos Blockchain (demo)
+                                div.text-leader Aptos - Building the safest and most scalable Layer 1 blockchain.
+                                div.mt-8.ml-2-minus
+                                    a.button.large.border.bd-orange.warning(style="border-radius: 20px;", href="/login") LOGIN TO MARKETPLACE
+
+
+                        div.cell-md-6.order-1.order-md-2
+                            div.h-100.banner-container
+                                img.banner(src="images/income.svg")
+
+
+        section.container-fluid
+            div.container.d-flex.flex-column.flex-justify-center.flex-align-center.border-top.bd-system.pt-10
+                h1
+                    span DEVNET IS
+                    span.text-bold LIVE!
+
+                p(style="max-width: 80%") The Aptos developer experience is just getting started! Come build with Aptos Community! Join our thriving community and dive into our documentation to start your journey with Aptos. This is an extremely early look as we want our community to see our entire evolution and help create something special.
+                p(style="max-width: 80%") Click the links below to start building on Aptos and stay tuned for more updates around Testnet and Mainnet!
+
+                div.d-flex.flex-row.mt-4
+                    a.m-2.button.large.border.bd-system.bg-white(style="border-radius: 20px;", href="https://aptos.dev") APTOS.DEV
+                    a.m-2.button.large.border.bd-system.bg-white(style="border-radius: 20px;", href="https://discord.gg/tuDs9TmWwv") APTOS.DISCORD
+
+        include footer
+
+        script(src="vendor/metro4/js/metro.js")
+        script(src="js/components/metro.conf.js")
         script(type="module" src="js/index.js")

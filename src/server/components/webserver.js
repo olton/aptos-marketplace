@@ -37,13 +37,14 @@ const route = () => {
     const dateFormat = JSON.stringify(config['date-format'])
 
     app.get('/', async (req, res) => {
-        // res.render('index', {
-        //     title: `${title} v${version}`,
-        //     version,
-        //     clientConfig,
-        //     dateFormat,
-        // })
-        res.redirect("/market")
+        if (req.session.account) {
+            res.redirect('/market')
+            return
+        }
+        res.render('index', {
+            title: `${title} v${version}`,
+            version,
+        })
     })
 
     app.get('/login', async (req, res) => {

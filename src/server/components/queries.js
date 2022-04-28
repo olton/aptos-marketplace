@@ -154,7 +154,7 @@ export const getDeals = async (sign) => {
         select d.*, o.*
         from deals d
         left join offers o on d.offer_id = o.offer_id
-        where d.buyer_sign = $1
+        where d.buyer_sign = $1 or d.seller_sign = $1
         order by d.deal_date desc
     `
     return (await query(sql, [sign])).rows

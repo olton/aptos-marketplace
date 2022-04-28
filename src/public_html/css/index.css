@@ -265,6 +265,27 @@ header nav {
 .scroll-table-container {
   overflow-x: auto;
 }
+.token-desc {
+  max-height: 60px;
+  overflow: hidden;
+}
+#demo-title {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .hero {
+    padding: 80px 80px;
+  }
+}
+@media screen and (min-width: 800px) {
+  #demo-title {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 50%;
+    margin-left: -160px;
+  }
+}
 html.dark-theme {
   --body-background: #3c3c3c;
 }
